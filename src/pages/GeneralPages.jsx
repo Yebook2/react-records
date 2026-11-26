@@ -10,18 +10,18 @@ export function HomePage() {
     <>
       <section className="hero">
         <div>
-          <h1>공부와 일상을<br />한 장씩</h1>
-          <p>오늘 배운 것, 기억하고 싶은 순간을 기록해 보세요.</p>
+          <h1>예북이의 기록장</h1>
+          <p>공부한 내용과 취미 생활을 기록합니다.</p>
           <div className="actions">
-            <ActionLink to="/entries/new"><Plus size={18} aria-hidden="true" />새 기록 쓰기</ActionLink>
+            <ActionLink to="/entries/new"><Plus size={18} aria-hidden="true" />글 쓰기</ActionLink>
             <ActionLink tone="secondary" to="/entries">내 기록 보기</ActionLink>
           </div>
         </div>
         <div className="notebook" aria-hidden="true"><span /><BookOpenText size={74} strokeWidth={1.2} /></div>
       </section>
       <div className="feature-grid">
-        <section className="feature"><BookOpen aria-hidden="true" /><h2>공부</h2><p>새로 배운 개념이나 문제를 풀며 알게 된 점을 정리하세요.</p></section>
-        <section className="feature"><Coffee aria-hidden="true" /><h2>일상</h2><p>취미, 취향, 다시 꺼내 보고 싶은 순간을 남겨 보세요.</p></section>
+        <section className="feature"><BookOpen aria-hidden="true" /><h2>공부</h2><p>공부하면서 정리한 내용과 문제 풀이</p></section>
+        <section className="feature"><Coffee aria-hidden="true" /><h2>일상</h2><p>취미 생활과 일상 기록</p></section>
       </div>
     </>
   );
@@ -52,13 +52,13 @@ export function LoginPage() {
   if (session) return <Navigate to={from} replace />;
   return (
     <>
-      <PageHeading title="기록장 시작하기" description="이 브라우저에서 나만의 기록장을 열 수 있어요." />
+      <PageHeading title="게스트로 시작하기" description="게스트로 접속하면 기록을 쓰고 다시 열 수 있습니다." />
       {status === 'loading' && <Loading label="접속 상태를 확인하는 중입니다." />}
       {status === 'error' && <ErrorState message={error} onRetry={retry} />}
       {status === 'ready' && (
         <section className="panel prose">
-          <h2>게스트로 이용하기</h2>
-          <p>이메일 없이 시작할 수 있어요. 브라우저 데이터를 지우거나 다른 기기로 옮기면 기존 기록에 다시 접근할 수 없어요.</p>
+          <h2>게스트 접속</h2>
+          <p>이메일 없이 이용할 수 있습니다. 기록은 처음 접속한 브라우저에서 다시 열 수 있습니다.</p>
           {failed && <ErrorState message="게스트 접속에 실패했습니다. 연결을 확인한 뒤 다시 시도해 주세요." />}
           <Button onClick={startSession} busy={submitting}>{submitting ? '접속 중…' : '게스트로 시작'}</Button>
         </section>
@@ -70,12 +70,12 @@ export function LoginPage() {
 export function AboutPage() {
   return (
     <>
-      <PageHeading title="기록장 소개" description="공부와 일상에서 발견한 것을 한곳에 모아 두세요." />
+      <PageHeading title="기록장 소개" />
       <section className="panel prose">
-        <h2>기록장 사용법</h2>
-        <p>새 기록에서 분류, 제목, 본문을 입력하고 저장하세요. 기록 목록에서 제목이나 본문으로 검색하고, 상세 화면에서 수정하거나 삭제할 수 있어요.</p>
+        <h2>공부와 일상</h2>
+        <p>공부한 내용과 취미 생활을 정리하는 개인 기록장입니다. 기록은 제목과 본문으로 검색할 수 있습니다.</p>
         <h2>기록을 볼 수 있는 사람</h2>
-        <p>게스트 세션별로 기록을 구분합니다. 같은 브라우저에서 접속하면 저장한 기록에 다시 접근할 수 있어요.</p>
+        <p>기록은 작성한 게스트만 볼 수 있습니다.</p>
         <ActionLink to="/entries">내 기록 보기</ActionLink>
       </section>
     </>
@@ -85,8 +85,8 @@ export function AboutPage() {
 export function NotFoundPage() {
   return (
     <>
-      <PageHeading title="페이지를 찾을 수 없어요" />
-      <EmptyState title="잘못된 주소" description="주소를 확인하거나 홈에서 다시 시작해 주세요."
+      <PageHeading title="페이지를 찾을 수 없습니다." />
+      <EmptyState title="잘못된 주소" description="주소를 확인해 주세요."
         action={<ActionLink to="/">홈으로</ActionLink>} />
     </>
   );
