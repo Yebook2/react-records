@@ -1,5 +1,7 @@
 # 예북이의 기록장
 
+[공개 서비스 열기](https://react-records-five.vercel.app/) · [GitHub 소스](https://github.com/Yebook2/react-records)
+
 공부와 일상 기록을 작성하고, 찾고, 고치고, 삭제하는 React SPA입니다. 핵심 데이터는 Supabase의 `entries` 테이블에 저장합니다. 게스트 접속 후 같은 브라우저에서 기록을 다시 열 수 있습니다.
 
 기술 스택은 React 19, React Router 7, Vite 7, JavaScript, CSS, Supabase Auth, Supabase Data API, PostgreSQL입니다.
@@ -32,7 +34,7 @@ npm run dev
 
 ## 라우트와 이동 경로
 
-[라우터](src/App.jsx)는 모든 페이지에 공통 [Layout](src/components/Layout.jsx)을 적용합니다. 헤더의 홈, 기록, 소개, 새 기록으로 주요 화면을 열 수 있습니다. 기록 카드는 상세로, 상세의 수정 링크는 편집으로 연결됩니다.
+[라우터](src/App.jsx)는 React Router의 Data 모드로 동작하며 모든 페이지에 공통 [Layout](src/components/Layout.jsx)을 적용합니다. 브라우저가 View Transition API를 지원하면 링크 이동 및 저장·삭제 후 이동에 화면 전환이 적용됩니다. 헤더의 홈, 기록, 소개, 새 기록으로 주요 화면을 열 수 있습니다. 기록 카드는 상세로, 상세의 수정 링크는 편집으로 연결됩니다.
 
 | 경로 | 페이지 컴포넌트 | 이동 방법 |
 | --- | --- | --- |
@@ -131,7 +133,11 @@ useEffect(() => {
 
 ## 배포 및 제출 확인
 
-소스는 [GitHub 저장소](https://github.com/Yebook2/react-records)에서 확인할 수 있습니다. 운영 Supabase 프로젝트 연결과 공개 배포, 원격 CRUD 검증이 남았습니다.
+- 공개 서비스는 [react-records-five.vercel.app](https://react-records-five.vercel.app/)에서 열 수 있습니다.
+- 제출용 소스는 [GitHub 저장소](https://github.com/Yebook2/react-records)에 있습니다.
+- 호스팅은 Vercel Hobby, 데이터베이스와 인증은 Supabase Free를 사용합니다.
+
+현재 배포는 운영 Supabase 환경변수를 적용해 Vite로 빌드한 정적 파일을 Vercel에 업로드했습니다. Vercel 프로젝트의 Production에도 같은 변수 두 개를 등록했습니다. GitHub 저장소를 가져와 Vercel에서 직접 빌드하려면 아래 순서를 사용합니다.
 
 1. Vercel에서 저장소를 가져오고 Vite 프로젝트로 설정합니다. 두 환경변수를 Production 환경에 등록한 뒤 배포합니다.
 2. 외부 브라우저에서 배포 URL과 `/about` 직접 접근을 확인합니다. 아래 순서로 원격 동작을 검증합니다.
@@ -148,7 +154,8 @@ useEffect(() => {
 | 프로덕션 빌드 | `npm run build` 통과 |
 | 로컬 브라우저 | 테스트용 Supabase API 응답과 PGlite를 사용해 게스트 접근, CRUD, 상세 새로고침, 검색·필터, 404, 빈 상태, 폼 검증, 제출 중 비활성화, 목록·저장 실패 및 재시도 확인 |
 | 데이터베이스 정책 | PGlite에서 SQL 마이그레이션 실행, 소유자 CRUD, 다른 사용자의 조회·수정·삭제 차단, 미인증 조회 차단, 빈 제목 거부 확인 |
-| 운영 환경 | 실제 Supabase 프로젝트 및 공개 배포 환경에서 재검증 필요 |
+| 운영 Supabase | 실제 프로젝트에서 게스트 인증, 등록·조회·수정·삭제, 다른 게스트의 조회·수정·삭제 차단 확인 |
+| 공개 배포 | Vercel 주소에서 직접 경로 진입, 게스트 접속, 폼 검증, 등록, 상세 새로고침, 수정, 검색·필터, 삭제, 빈 목록, Not Found 확인 |
 
 ## 평가 항목별 근거
 
@@ -158,7 +165,7 @@ useEffect(() => {
 | #2 원격 CRUD | [entries.js](src/lib/entries.js), [EntryPages.jsx](src/pages/EntryPages.jsx) |
 | #3 로딩·오류·빈 상태 | [ui.jsx](src/components/ui.jsx)의 `Loading`, `ErrorState`, `EmptyState` |
 | #4 폼 검증 및 제출 상태 | [EntryForm.jsx](src/components/EntryForm.jsx)와 위 비동기 상태 설명 |
-| #5 배포와 환경변수 | 위 배포 및 제출 확인, [.env.example](.env.example), [vercel.json](vercel.json). 공개 동작 확인 남음 |
+| #5 배포와 환경변수 | [공개 서비스](https://react-records-five.vercel.app/), 위 운영 검증 결과, [.env.example](.env.example), [vercel.json](vercel.json) |
 | #6 조회 커스텀 훅 | [useEntries.js](src/hooks/useEntries.js) |
 | #7 구조 분리 | 위 폴더 역할 표 |
 | #8 8개 이상의 공통 컴포넌트 | 위 재사용 컴포넌트와 props 표 |
