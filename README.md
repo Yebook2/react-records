@@ -1,15 +1,3 @@
-
-
-## 공개 배포 CRUD 화면 증빙
-
-2026년 11월 27일 [공개 서비스](https://react-records-five.vercel.app/)에서 같은 테스트 기록을 등록하고, 상세 주소를 새로고침해 조회한 뒤 제목을 수정하고 삭제했습니다. 캡처 순서는 등록, 조회, 수정, 삭제입니다.
-
-제목과 본문의 필수값·길이 오류는 각 입력 필드 옆에 표시합니다. 원격 저장 요청이 실패하면 입력값을 유지하고 폼 공통 오류 영역에 재시도 안내를 표시합니다.
-
-<img width="1280" height="720" alt="04-delete" src="https://github.com/user-attachments/assets/db3cf9ab-f4df-4795-978d-099996e1f798" />
-<img width="1280" height="720" alt="03-update" src="https://github.com/user-attachments/assets/4a8174d3-9389-4857-b673-5f1f3ee6916f" />
-<img width="1280" height="720" alt="02-read" src="https://github.com/user-attachments/assets/5af1bc13-aaf5-4f7a-abab-ce2382c613d5" />
-<img width="1280" height="720" alt="01-create" src="https://github.com/user-attachments/assets/3a6a0080-6617-481c-b4d4-3f6b6710458d" />
 # 예북이의 기록장
 
 [공개 서비스 열기](https://react-records-five.vercel.app/) · [GitHub 소스](https://github.com/Yebook2/react-records)
@@ -188,3 +176,17 @@ useEffect(() => {
 | #13 렌더링 사례 3개 이상 | 위 상태가 화면을 바꾸는 사례 표 |
 | #14 라우터와 전체 기능 흐름 | 위 라우트 표와 작성 전체 흐름 |
 | #15 백엔드 선택과 인증 | 위 Supabase 선택 이유와 [SQL 정책](supabase/migrations/20261127000000_create_entries.sql) |
+
+## 공개 배포 CRUD 화면 증빙
+
+2026년 11월 27일 [공개 서비스](https://react-records-five.vercel.app/)에서 같은 테스트 기록을 등록하고, 상세 주소를 새로고침해 조회한 뒤 제목을 수정하고 삭제했습니다. 캡처 순서는 등록, 조회, 수정, 삭제입니다.
+
+제목과 본문의 필수값·길이 오류는 각 입력 필드 옆에 표시합니다. 원격 저장 요청이 실패하면 입력값을 유지하고 폼 공통 오류 영역에 재시도 안내를 표시합니다.
+
+<img width="1280" height="720" alt="01-create" src="https://github.com/user-attachments/assets/3a6a0080-6617-481c-b4d4-3f6b6710458d" />
+
+<img width="1280" height="720" alt="02-read" src="https://github.com/user-attachments/assets/5af1bc13-aaf5-4f7a-abab-ce2382c613d5" />
+
+<img width="1280" height="720" alt="03-update" src="https://github.com/user-attachments/assets/4a8174d3-9389-4857-b673-5f1f3ee6916f" />
+
+<img width="1280" height="720" alt="04-delete" src="https://github.com/user-attachments/assets/db3cf9ab-f4df-4795-978d-099996e1f798" />
